@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqf0skjv80ggn"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_owfrf"]
+[ext_resource type="Texture2D" uid="uid://cykuiwi3wivqa" path="res://Sprites/knightSheet.png" id="2_1vps7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm2d"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmqk0"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1glsl"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdxmw"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqr1k"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haffr"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58wav"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgoi5"]
+atlas = ExtResource("2_1vps7")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byym0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmqk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1glsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdxmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqr1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haffr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58wav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgoi5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11cnb"]
+radius = 13.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_owfrf")
+health = 100
+speed = 100
+damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_byym0")
+frame_progress = 0.815907
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_11cnb")

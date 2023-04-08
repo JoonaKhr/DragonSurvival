@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfxn213a06q6f"]
+
+[ext_resource type="Texture2D" uid="uid://bdyssccuy4o8h" path="res://Sprites/fireballSheet.png" id="1_lkb00"]
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_x7fpm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diqup"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddtli"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3lr6"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na6f3"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwus4"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxl8h"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okjb5"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cqjy"]
+atlas = ExtResource("1_lkb00")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0onx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diqup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddtli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3lr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na6f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwus4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxl8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okjb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cqjy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vk82c"]
+radius = 8.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_x7fpm")
+speed = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c0onx")
+frame_progress = 0.663392
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 1)
+shape = SubResource("CircleShape2D_vk82c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

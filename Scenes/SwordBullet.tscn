@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dasyyrt5sshsd"]
+
+[ext_resource type="Script" path="res://Scripts/SwordBullet.gd" id="1_ugvkg"]
+[ext_resource type="Texture2D" uid="uid://b3jlkyce1dhq0" path="res://Sprites/swordProjectile.png" id="2_01t3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqgkw"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bhtj"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnxbh"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imj1r"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64eyo"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll3mt"]
+atlas = ExtResource("2_01t3o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0onx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqgkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bhtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnxbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imj1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64eyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll3mt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pvmt"]
+radius = 4.0
+height = 32.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_ugvkg")
+speed = 200
+damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c0onx")
+frame_progress = 0.279593
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2pvmt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
