@@ -1,6 +1,7 @@
 extends Node
 
 @export var bulletScene : PackedScene
+@export var swordScene : PackedScene
 @export var enemyScene : PackedScene
 @export var enemySpawnDistance = 400
 
@@ -19,9 +20,3 @@ func _on_enemy_timer_timeout():
 	# Randomise direction of the enemy spawn
 	enemy.position = get_node("Player").position + Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized() * enemySpawnDistance
 	add_child(enemy)
-
-
-func _on_gun_timer_timeout():
-	var bullet = bulletScene.instantiate()
-	bullet.position = get_node("Player").position
-	add_child(bullet)

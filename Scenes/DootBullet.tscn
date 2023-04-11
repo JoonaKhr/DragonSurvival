@@ -46,12 +46,11 @@ radius = 8.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_7wrij")
-speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
 animation = &"new_animation"
-frame_progress = 0.742464
+frame_progress = 0.672571
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 1)

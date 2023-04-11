@@ -71,10 +71,13 @@ animations = [{
 radius = 8.0
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(0.4, 0.4)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_x7fpm")
-speed = 100
+damage = 10.0
+projectileSpeed = 100.0
+attackTimer = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -83,5 +86,8 @@ frame_progress = 0.663392
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 1)
 shape = SubResource("CircleShape2D_vk82c")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

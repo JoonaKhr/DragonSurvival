@@ -58,15 +58,17 @@ radius = 4.0
 height = 32.0
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(0.4, 0.4)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ugvkg")
-speed = 200
-damage = 10
+damage = 2.0
+projectileSpeed = 200.0
+attackTimer = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
-frame_progress = 0.279593
+frame_progress = 0.360521
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

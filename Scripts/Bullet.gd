@@ -1,21 +1,22 @@
-extends "res://Scripts/BaseCharacter.gd"
+extends "res://Scripts/BaseProjectile.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	if enemies:
-		look_at(enemies.pick_random().position)
-	else:
-		look_at(get_global_mouse_position())
+	var player = get_parent().get_node("Player")
+	var nearestEnemy
+	if !enemies.is_empty():
+		nearestEnemy = enemies[0]
+	for enemy in enemies:
+		if enemy.global_position.distance_to(player.global_position) < nearestEnemy.global_position.distance_to(player.global_position):
+			nearestEnemy = enemy
+	look_at(nearestEnemy.position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = transform.x * 1 * speed
+	velocity = transform.x * 1 * projectileSpeed
 	position += velocity * delta
 
-func _on_area_entered(area):
-	if area in get_tree().get_nodes_in_group("Enemies"):
-		area.queue_free()
-		queue_free()
+

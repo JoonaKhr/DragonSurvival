@@ -1,4 +1,4 @@
-extends "res://Scripts/BaseCharacter.gd"
+extends "res://Scripts/BaseProjectile.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,13 +9,8 @@ func _ready():
 	else:
 		look_at(get_global_mouse_position())
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = transform.x * 1 * speed
+	velocity = transform.x * 1 * projectileSpeed
 	position += velocity * delta
 
-func _on_area_entered(area):
-	if area in get_tree().get_nodes_in_group("Enemies"):
-		area.queue_free()
-		queue_free()

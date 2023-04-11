@@ -4,23 +4,24 @@ enum STATES {Idle, Walk}
 var state = STATES.Idle
 var last_state = state
 var bullet = load("res://Scenes/Bullet.tscn")
+var sword = load("res://Scenes/SwordBullet.tscn")
 var bullets
 signal hit
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	getWeapon("fireball")
+	getWeapon(sword)
+	getWeapon(sword)
+	getWeapon(sword)
+	getWeapon(sword)
+	getWeapon(bullet)
 
 func get_pos():
 	print(position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if health <= 0:
-		hide()
-		get_parent().get_node("GunTimer").stop()
-		$CollisionShape2D.set_deferred("disabled", true)
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
 		$AnimatedSprite2D.flip_h = false
@@ -55,8 +56,32 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
+func shoot(weapon, instance):
+	if instance not in get_children():
+		instance = weapon.instantiate()
+		instance.position = position
+		get_parent().add_child(instance)
+
 func getWeapon(weapon):
-	if weapon not in weaponList.keys():
-		weaponList[weapon] = 1
-	else:
-		weaponList[weapon] += 1
+	var timer = Timer.new()
+	var instancedWeapon = weapon.instantiate()
+	timer.timeout.connect(shoot.bind(weapon, instancedWeapon))
+	timer.wait_time = instancedWeapon.getAttackSpeed()
+	add_child(timer)
+	timer.start()
+	# if weapon not in weaponList.keys():
+	# 	weaponList[weapon] = 1
+	# else:
+	# 	weaponList[weapon] += 1
+
+# when you gain a weapon for the first time load the scene into memory and add an object to the weaponlist
+
+# put the variable of an instanced scene into the dictionary and the amount of them as the value
+
+# put the timer onto the bullet scene maybe it works ?
+
+# find a way to keep possible enemy bullets and sprites always on top
+
+#Create child timer onto player when receiving weapon
+
+#BaseProjectile

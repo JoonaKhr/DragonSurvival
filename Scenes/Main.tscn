@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuef0ovc0e6hw"]
+[gd_scene load_steps=14 format=3 uid="uid://cuef0ovc0e6hw"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_ayie8"]
+[ext_resource type="PackedScene" uid="uid://dasyyrt5sshsd" path="res://Scenes/SwordBullet.tscn" id="2_1knsx"]
 [ext_resource type="PackedScene" uid="uid://e76srqcwb31g" path="res://Scenes/Player.tscn" id="2_axruk"]
 [ext_resource type="Texture2D" uid="uid://ckuwpurw4v3mm" path="res://Sprites/Parallax/background B layer1.png" id="2_qkvit"]
+[ext_resource type="PackedScene" uid="uid://dfxn213a06q6f" path="res://Scenes/Bullet.tscn" id="2_vhtdk"]
 [ext_resource type="Texture2D" uid="uid://bje8or6cu4t1h" path="res://Sprites/Parallax/background B layer2.png" id="3_22kmg"]
 [ext_resource type="PackedScene" uid="uid://ccqcr0iinfflc" path="res://Scenes/Bush.tscn" id="3_b0c0d"]
 [ext_resource type="Texture2D" uid="uid://dfytwestow3rm" path="res://Sprites/Parallax/background B layer3.png" id="4_1t3ve"]
@@ -259,11 +261,11 @@ sources/0 = SubResource("TileSetAtlasSource_0di2e")
 
 [node name="Node" type="Node"]
 script = ExtResource("1_ayie8")
-bulletScene = ExtResource("3_b0c0d")
+bulletScene = ExtResource("2_vhtdk")
+swordScene = ExtResource("2_1knsx")
 enemyScene = ExtResource("7_062nu")
 
 [node name="Player" parent="." instance=ExtResource("2_axruk")]
-position = Vector2(177, 313)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -318,10 +320,7 @@ tile_set = SubResource("TileSet_h577i")
 format = 2
 
 [node name="EnemyTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="GunTimer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]

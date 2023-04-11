@@ -80,7 +80,7 @@ damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_byym0")
-frame_progress = 0.815907
+frame_progress = 0.994522
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_11cnb")

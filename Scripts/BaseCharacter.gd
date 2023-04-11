@@ -9,10 +9,8 @@ var velocity
 
 func takeDamage(DamageSource):
 	health -= DamageSource
-
-func shoot(WeaponList : Dictionary):
-	if WeaponList.is_empty():
-		pass
-	else:
-		for weapon in WeaponList.keys():
-			var weaponAmount = WeaponList[weapon]
+	if health <= 0:
+		if self in get_tree().get_nodes_in_group("Enemies"):
+			queue_free()
+		else:
+			hide()
