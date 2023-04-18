@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://5ak1xr2u6k1t"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pkc13"]
+[ext_resource type="Script" path="res://Scripts/Enemies/DootEnemy.gd" id="1_a4qfn"]
 [ext_resource type="Texture2D" uid="uid://ddmruc4j5ft5t" path="res://Sprites/dootSheet.png" id="2_tkdhq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ov3h"]
@@ -48,18 +48,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_11cnb"]
 radius = 13.0
 
-[node name="Area2D" type="Area2D"]
-scale = Vector2(0.5, 0.5)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_pkc13")
-health = 1
-speed = 100
-damage = 10
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_a4qfn")
+health = 10
+speed = 15
+currExp = 5
+level = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1dn0d")
 frame_progress = 0.85597
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_11cnb")

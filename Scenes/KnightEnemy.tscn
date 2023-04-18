@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cqf0skjv80ggn"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_owfrf"]
+[ext_resource type="Script" path="res://Scripts/Enemies/KnightEnemy.gd" id="1_m7rwq"]
 [ext_resource type="Texture2D" uid="uid://cykuiwi3wivqa" path="res://Sprites/knightSheet.png" id="2_1vps7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cm2d"]
@@ -70,17 +70,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_11cnb"]
 radius = 13.0
 
-[node name="Area2D" type="Area2D"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_owfrf")
-health = 100
-speed = 100
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_m7rwq")
+health = 20
+speed = 15
 damage = 10
+currExp = 15
+level = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_byym0")
-frame_progress = 0.994522
+frame_progress = 0.552983
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_11cnb")

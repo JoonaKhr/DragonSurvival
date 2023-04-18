@@ -3,7 +3,7 @@ extends "res://Scripts/BaseCharacter.gd"
 enum STATES {Idle, Walk}
 var state = STATES.Idle
 var last_state = state
-var bullet = load("res://Scenes/Bullet.tscn")
+var bullet = load("res://Scenes/FireballBullet.tscn")
 var sword = load("res://Scenes/SwordBullet.tscn")
 var bullets
 signal hit
@@ -16,6 +16,7 @@ func _ready():
 	getWeapon(sword)
 	getWeapon(sword)
 	getWeapon(bullet)
+	print(expToLevel)
 
 func get_pos():
 	print(position)
@@ -56,19 +57,7 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-func shoot(weapon, instance):
-	if instance not in get_children():
-		instance = weapon.instantiate()
-		instance.position = position
-		get_parent().add_child(instance)
 
-func getWeapon(weapon):
-	var timer = Timer.new()
-	var instancedWeapon = weapon.instantiate()
-	timer.timeout.connect(shoot.bind(weapon, instancedWeapon))
-	timer.wait_time = instancedWeapon.getAttackSpeed()
-	add_child(timer)
-	timer.start()
 	# if weapon not in weaponList.keys():
 	# 	weaponList[weapon] = 1
 	# else:

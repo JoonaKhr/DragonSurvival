@@ -1,38 +1,38 @@
 [gd_scene load_steps=13 format=3 uid="uid://dfxn213a06q6f"]
 
-[ext_resource type="Texture2D" uid="uid://bdyssccuy4o8h" path="res://Sprites/fireballSheet.png" id="1_lkb00"]
-[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_x7fpm"]
+[ext_resource type="Script" path="res://Scripts/Projectiles/FireballBullet.gd" id="1_cmvfk"]
+[ext_resource type="Texture2D" uid="uid://bdyssccuy4o8h" path="res://Sprites/fireballSheet.png" id="2_j7361"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diqup"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddtli"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3lr6"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na6f3"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwus4"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxl8h"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okjb5"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cqjy"]
-atlas = ExtResource("1_lkb00")
+atlas = ExtResource("2_j7361")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0onx"]
@@ -72,12 +72,10 @@ radius = 8.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.4, 0.4)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_x7fpm")
-damage = 10.0
+script = ExtResource("1_cmvfk")
+damage = 20.0
 projectileSpeed = 100.0
-attackTimer = 1.0
+attackTimer = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -87,7 +85,4 @@ frame_progress = 0.663392
 position = Vector2(6, 1)
 shape = SubResource("CircleShape2D_vk82c")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dasyyrt5sshsd"]
 
-[ext_resource type="Script" path="res://Scripts/SwordBullet.gd" id="1_ugvkg"]
+[ext_resource type="Script" path="res://Scripts/Projectiles/SwordBullet.gd" id="1_fpqf1"]
 [ext_resource type="Texture2D" uid="uid://b3jlkyce1dhq0" path="res://Sprites/swordProjectile.png" id="2_01t3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqgkw"]
@@ -59,19 +59,17 @@ height = 32.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.4, 0.4)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_ugvkg")
-damage = 2.0
+script = ExtResource("1_fpqf1")
+damage = 10.0
 projectileSpeed = 200.0
-attackTimer = 0.5
+attackTimer = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
-frame_progress = 0.360521
+frame_progress = 0.00440071
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2pvmt")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

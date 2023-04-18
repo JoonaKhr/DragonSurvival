@@ -60,11 +60,13 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeayv"]
 
-[node name="Area2D" type="Area2D"]
-collision_layer = 0
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_1ew7m")
 health = 100
 speed = 400
+expToLevel = 100.0
+level = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -75,5 +77,3 @@ animation = &"idle"
 position = Vector2(0, 5)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_oeayv")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

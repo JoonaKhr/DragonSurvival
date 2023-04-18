@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://drqraorau52ha"]
 
-[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_7wrij"]
 [ext_resource type="Texture2D" uid="uid://mhyw567fox0m" path="res://Sprites/dootProjectile.png" id="2_lctgs"]
+[ext_resource type="Script" path="res://Scripts/Projectiles/DootBullet.gd" id="3_j6b3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in0y3"]
 atlas = ExtResource("2_lctgs")
@@ -43,17 +43,18 @@ animations = [{
 radius = 8.0
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_7wrij")
+scale = Vector2(0.296786, 0.3)
+collision_layer = 0
+script = ExtResource("3_j6b3e")
+damage = 10.0
+projectileSpeed = 100.0
+attackTimer = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
 animation = &"new_animation"
-frame_progress = 0.672571
+frame_progress = 0.787674
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 1)
+position = Vector2(-6.73885, 3.33333)
 shape = SubResource("CircleShape2D_vk82c")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
