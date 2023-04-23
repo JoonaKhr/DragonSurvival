@@ -5,7 +5,7 @@ extends Area2D
 @export var attackTimer : float;
 @export var multishot : int;
 var velocity
-var elementType
+@export_flags("Fire", "Water", "Lightning", "Earth") var elementType = 0
 
 func getDamage():
     return damage
@@ -16,15 +16,12 @@ func getProjectileSpeed():
 func getAttackSpeed():
     return attackTimer
 
-func getVelocity():
-    return velocity
-
 func getElementType():
     return elementType
 
 func _on_body_entered(body):
     if body in get_tree().get_nodes_in_group("Enemies"):
-        body.takeDamage(damage)
+        body.takeDamage(self)
         queue_free()
     
 #set up bonus damage from player

@@ -11,11 +11,11 @@ signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	getWeapon(sword)
-	getWeapon(sword)
-	getWeapon(sword)
-	getWeapon(sword)
-	getWeapon(bullet)
+	getWeapon(sword, 1)
+	getWeapon(sword, 2)
+	getWeapon(sword, 4)
+	getWeapon(sword, 8)
+	getWeapon(bullet, 3)
 	print(expToLevel)
 
 func get_pos():

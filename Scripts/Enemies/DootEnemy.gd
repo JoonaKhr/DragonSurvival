@@ -5,7 +5,7 @@ var dootBullet = load("res://Scenes/DootBullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
-	getWeapon(dootBullet)
+	getWeapon(dootBullet, 0)
 	add_to_group("Enemies")
 
 

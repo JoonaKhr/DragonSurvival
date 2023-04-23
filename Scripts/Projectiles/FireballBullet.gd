@@ -4,7 +4,7 @@ extends "res://Scripts/BaseProjectile.gd"
 func _ready():
 	$AnimatedSprite2D.play()
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	var player = get_parent().get_node("Player")
+	var player = get_tree().get_nodes_in_group("Player")[0]
 	var nearestEnemy
 	if !enemies.is_empty():
 		nearestEnemy = enemies[0]
@@ -20,3 +20,4 @@ func _process(delta):
 	position += velocity * delta
 
 
+# Make generic damage type bullets with modulation

@@ -263,7 +263,7 @@ script = ExtResource("1_ayie8")
 enemyScene = ExtResource("2_sg6im")
 knightEnemyScene = ExtResource("3_2m3rw")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_axruk")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_axruk")]
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
