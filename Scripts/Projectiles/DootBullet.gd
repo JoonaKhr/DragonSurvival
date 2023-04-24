@@ -17,3 +17,7 @@ func _on_area_entered(area):
 	if area in get_tree().get_nodes_in_group("player"):
 		area.takeDamage(damage)
 		queue_free()
+
+
+func _on_death_timer_timeout():
+	queue_free()

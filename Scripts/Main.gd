@@ -11,7 +11,6 @@ func _ready():
 	enemies.append(enemyScene)
 	enemies.append(knightEnemyScene)
 	player = get_node("Player")
-	print(player.elementResistance)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

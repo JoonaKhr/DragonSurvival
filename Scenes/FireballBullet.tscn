@@ -76,6 +76,7 @@ script = ExtResource("1_cmvfk")
 damage = 20.0
 projectileSpeed = 100.0
 attackTimer = 2.0
+elementType = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -85,4 +86,9 @@ frame_progress = 0.663392
 position = Vector2(6, 1)
 shape = SubResource("CircleShape2D_vk82c")
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

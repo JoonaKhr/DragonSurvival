@@ -18,3 +18,7 @@ func _process(delta):
 	velocity = transform.x * 1 * projectileSpeed
 	position += velocity * delta
 
+func _on_death_timer_timeout():
+	queue_free()
+
+

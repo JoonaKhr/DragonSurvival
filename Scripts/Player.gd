@@ -57,20 +57,8 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-
-	# if weapon not in weaponList.keys():
-	# 	weaponList[weapon] = 1
-	# else:
-	# 	weaponList[weapon] += 1
-
 # when you gain a weapon for the first time load the scene into memory and add an object to the weaponlist
 
 # put the variable of an instanced scene into the dictionary and the amount of them as the value
 
-# put the timer onto the bullet scene maybe it works ?
-
 # find a way to keep possible enemy bullets and sprites always on top
-
-#Create child timer onto player when receiving weapon
-
-#BaseProjectile

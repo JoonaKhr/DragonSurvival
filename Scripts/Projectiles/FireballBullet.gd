@@ -19,5 +19,5 @@ func _process(delta):
 	velocity = transform.x * 1 * projectileSpeed
 	position += velocity * delta
 
-
-# Make generic damage type bullets with modulation
+func _on_death_timer_timeout():
+	queue_free()

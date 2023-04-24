@@ -58,3 +58,9 @@ frame_progress = 0.787674
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6.73885, 3.33333)
 shape = SubResource("CircleShape2D_vk82c")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

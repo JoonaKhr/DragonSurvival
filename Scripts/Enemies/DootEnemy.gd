@@ -8,7 +8,6 @@ func _ready():
 	getWeapon(dootBullet, 0)
 	add_to_group("Enemies")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var plrPosition = get_parent().get_node("Player").position
