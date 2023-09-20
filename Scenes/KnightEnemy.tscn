@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqf0skjv80ggn"]
+[gd_scene load_steps=14 format=3 uid="uid://cqf0skjv80ggn"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/KnightEnemy.gd" id="1_m7rwq"]
 [ext_resource type="Texture2D" uid="uid://cykuiwi3wivqa" path="res://Sprites/knightSheet.png" id="2_1vps7"]
+[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="3_c8pl4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cm2d"]
 atlas = ExtResource("2_1vps7")
@@ -71,6 +72,7 @@ animations = [{
 radius = 13.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_m7rwq")
 health = 20
@@ -78,14 +80,17 @@ speed = 15
 damage = 10
 currExp = 15
 level = 1
-elementResistance = 8
-elementWeakness = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_byym0")
-frame_progress = 0.552983
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_11cnb")
+
+[node name="Elements" parent="." instance=ExtResource("3_c8pl4")]
+elementTypes = 8
+
+[connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="hit" from="." to="." method="_on_hit"]

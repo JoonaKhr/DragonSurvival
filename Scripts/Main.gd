@@ -5,17 +5,21 @@ extends Node
 @export var enemySpawnDistance = 400
 var enemies : Array[PackedScene]
 var player 
+enum gameStates {PAUSED, PLAYING, GAMEOVER}
+var currentGameState
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enemies.append(enemyScene)
 	enemies.append(knightEnemyScene)
 	player = get_node("Player")
+	randomize()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if player.states.DEAD:
+		currentGameState = gameStates.GAMEOVER
 
 
 func _on_enemy_timer_timeout():

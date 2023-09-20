@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://drqraorau52ha"]
+[gd_scene load_steps=11 format=3 uid="uid://drqraorau52ha"]
 
 [ext_resource type="Texture2D" uid="uid://mhyw567fox0m" path="res://Sprites/dootProjectile.png" id="2_lctgs"]
+[ext_resource type="AudioStream" uid="uid://d3vqjqnvwtc65" path="res://Sounds/doot.mp3" id="3_204er"]
 [ext_resource type="Script" path="res://Scripts/Projectiles/DootBullet.gd" id="3_j6b3e"]
+[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="4_vmbl5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in0y3"]
 atlas = ExtResource("2_lctgs")
@@ -44,11 +46,11 @@ radius = 8.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.296786, 0.3)
-collision_layer = 0
 script = ExtResource("3_j6b3e")
-damage = 10.0
+damage = 5.0
 projectileSpeed = 100.0
 attackTimer = 3.0
+multishot = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -63,4 +65,13 @@ shape = SubResource("CircleShape2D_vk82c")
 wait_time = 5.0
 autostart = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_204er")
+autoplay = true
+bus = &"Sound Effects"
+
+[node name="Elements" parent="." instance=ExtResource("4_vmbl5")]
+elementTypes = 4
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

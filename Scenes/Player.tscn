@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://e76srqcwb31g"]
+[gd_scene load_steps=12 format=3 uid="uid://e76srqcwb31g"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_23kpj"]
 [ext_resource type="Texture2D" uid="uid://3xw0gx63mnnn" path="res://Sprites/SalmonSnakeSheet.png" id="2_5g43t"]
+[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="3_ln43a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhblw"]
 atlas = ExtResource("2_5g43t")
@@ -61,6 +62,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeayv"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_23kpj")
 health = 100
@@ -73,6 +75,12 @@ sprite_frames = SubResource("SpriteFrames_7rr1y")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(-2, 4)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_oeayv")
+
+[node name="Elements" parent="." instance=ExtResource("3_ln43a")]
+elementTypes = 1
+
+[connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="hit" from="." to="." method="_on_hit"]

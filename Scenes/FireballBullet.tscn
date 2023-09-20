@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfxn213a06q6f"]
+[gd_scene load_steps=14 format=3 uid="uid://dfxn213a06q6f"]
 
 [ext_resource type="Script" path="res://Scripts/Projectiles/FireballBullet.gd" id="1_cmvfk"]
 [ext_resource type="Texture2D" uid="uid://bdyssccuy4o8h" path="res://Sprites/fireballSheet.png" id="2_j7361"]
+[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="3_jthyx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diqup"]
 atlas = ExtResource("2_j7361")
@@ -72,11 +73,11 @@ radius = 8.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.4, 0.4)
+collision_mask = 4
 script = ExtResource("1_cmvfk")
 damage = 20.0
 projectileSpeed = 100.0
 attackTimer = 2.0
-elementType = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -89,6 +90,11 @@ shape = SubResource("CircleShape2D_vk82c")
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 15.0
 autostart = true
+
+[node name="Elements" parent="." instance=ExtResource("3_jthyx")]
+elementTypes = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,4 +1,4 @@
-extends "res://Scripts/BaseCharacter.gd"
+extends "res://Scripts/BaseEnemy.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +9,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var plrPosition = get_parent().get_node("Player").position
-	look_at(plrPosition)
+	if get_parent().get_node("Player"):
+		look_at(plrPosition)
 	velocity = transform.x * 1 * speed
-	position += velocity * delta
+	var collision := move_and_collide(velocity * delta)
+	if collision != null:
+		var _body := collision.get_collider()

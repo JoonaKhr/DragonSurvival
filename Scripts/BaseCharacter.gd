@@ -6,24 +6,22 @@ extends CharacterBody2D
 @export var currExp : int;
 @export var expToLevel : float;
 @export var level : int;
-@export_flags("Fire", "Water", "Lightning", "Earth") var elementResistance = 0
-@export_flags("Fire", "Water", "Lightning", "Earth") var elementWeakness = 0
 var weaponList : Dictionary;
 var instancedWeapon
+var elementType
 
-func takeDamage(damageSource):
-	if damageSource.elementType == elementResistance:
-		health -= damageSource.damage / 2
-		print("Damage Halved")
-	elif damageSource.elementType == elementWeakness:
-		health -= damageSource.damage * 2
-		print("Damage Doubled")
-	if health <= 0:
-		if self in get_tree().get_nodes_in_group("Enemies"):
-			get_tree().get_nodes_in_group("Player")[0].gainExp(self)
-			queue_free()
-		else:
-			hide()
+signal hit
+signal dead
+
+enum states {ALIVE = 0, DEAD = 1, DAMAGED = 2, INVULNERABLE = 3}
+
+enum movementStates {Idle, Walk}
+var movementState = movementStates.Idle
+var last_state = movementState
+var currentState = states.ALIVE
+
+func _ready():
+	elementType = $Elements.elementTypes
 
 func shoot(weapon, instance, element):
 	if instance not in get_children():
@@ -31,6 +29,10 @@ func shoot(weapon, instance, element):
 		instance.position = position
 		instance.elementType = element
 		get_parent().add_child(instance)
+		instance.get_node("AudioStreamPlayer2D").pitch_scale = randf_range(0.7, 1.5)
+
+func giveExp(target):
+	target.gainExp(self)
 
 func gainExp(source):
 	currExp += source.currExp
@@ -42,7 +44,7 @@ func gainLevelUp():
 	currExp = 0
 	level += 1
 	expToLevel *= 1.5
-	print("You got level!")
+	print("You got a level!, you are now level " + str(self.level))
 	roundf(expToLevel)
 
 func getWeapon(weapon, element):
@@ -52,3 +54,8 @@ func getWeapon(weapon, element):
 	timer.wait_time = instancedWeapon.getAttackSpeed()
 	add_child(timer)
 	timer.start()
+
+func _on_hit(source):
+	health -= source.getDamage()
+	if health <= 0:
+		dead.emit()

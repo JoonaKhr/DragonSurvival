@@ -1,12 +1,8 @@
 extends "res://Scripts/BaseCharacter.gd"
 
-enum STATES {Idle, Walk}
-var state = STATES.Idle
-var last_state = state
 var bullet = load("res://Scenes/FireballBullet.tscn")
 var sword = load("res://Scenes/SwordBullet.tscn")
 var bullets
-signal hit
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,21 +32,16 @@ func _process(delta):
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		state = STATES.Walk
+		movementState = movementStates.Walk
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.speed_scale = 2
 		$AnimatedSprite2D.play()
 	else:
-		state = STATES.Idle
+		movementState = movementStates.Idle
 		# $ is same as get_node()
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.stop()
-	position += velocity * delta
-
-func _on_area_entered(area):
-	if area in get_tree().get_nodes_in_group("Enemies"):
-		takeDamage(area.damage)
-		print("got hit ", health)
+	move_and_collide(velocity * delta)
 
 func start(pos):
 	position = pos
@@ -62,3 +53,7 @@ func start(pos):
 # put the variable of an instanced scene into the dictionary and the amount of them as the value
 
 # find a way to keep possible enemy bullets and sprites always on top
+
+func _on_dead():
+	hide()
+	get_tree().paused = true
