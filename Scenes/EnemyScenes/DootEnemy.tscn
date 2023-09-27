@@ -55,7 +55,7 @@ motion_mode = 1
 script = ExtResource("1_a4qfn")
 health = 10
 speed = 15
-currExp = 5
+currXp = 5
 level = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

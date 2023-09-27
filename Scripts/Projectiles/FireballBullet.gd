@@ -1,4 +1,4 @@
-extends "res://Scripts/BaseProjectile.gd"
+extends "res://Scripts/Base/BaseProjectile.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

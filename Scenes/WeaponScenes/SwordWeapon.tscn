@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://q5tuwovpvlnd"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/SwordWeapon.gd" id="1_yqqru"]
+[ext_resource type="PackedScene" uid="uid://dasyyrt5sshsd" path="res://Scenes/BulletScenes/SwordBullet.tscn" id="2_sfarx"]
+[ext_resource type="AudioStream" uid="uid://dqc5h3a4hfgcn" path="res://Sounds/swordsound.wav" id="4_pdiew"]
+
+[node name="SwordWeapon" type="Node"]
+script = ExtResource("1_yqqru")
+projectile = ExtResource("2_sfarx")
+attackTime = 1.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="shootSoundEmitter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pdiew")
+bus = &"Sound Effects"
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

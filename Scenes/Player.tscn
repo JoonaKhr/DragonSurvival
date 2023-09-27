@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://e76srqcwb31g"]
+[gd_scene load_steps=13 format=3 uid="uid://e76srqcwb31g"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_23kpj"]
 [ext_resource type="Texture2D" uid="uid://3xw0gx63mnnn" path="res://Sprites/SalmonSnakeSheet.png" id="2_5g43t"]
 [ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="3_ln43a"]
+[ext_resource type="PackedScene" uid="uid://d1iivuawpbm3m" path="res://Scenes/IngameUI.tscn" id="4_noqdi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhblw"]
 atlas = ExtResource("2_5g43t")
@@ -65,9 +66,10 @@ animations = [{
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_23kpj")
+maxHealth = 100
 health = 100
 speed = 400
-expToLevel = 100.0
+xpToLevel = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -82,5 +84,16 @@ shape = SubResource("CircleShape2D_oeayv")
 [node name="Elements" parent="." instance=ExtResource("3_ln43a")]
 elementTypes = 1
 
+[node name="IngameUI" parent="." instance=ExtResource("4_noqdi")]
+offset_left = -556.0
+offset_top = -281.0
+offset_right = -556.0
+offset_bottom = -281.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
 [connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="healthChanged" from="." to="IngameUI" method="_on_player_health_changed"]
 [connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="xpChanged" from="." to="IngameUI" method="_on_player_xp_changed"]

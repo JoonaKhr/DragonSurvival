@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1iivuawpbm3m"]
+
+[ext_resource type="Script" path="res://Scripts/IngameUI.gd" id="1_hgw7a"]
+[ext_resource type="Texture2D" uid="uid://b8w88xwcegq1r" path="res://Sprites/Assets 2(Scale x2)-No-BG.png" id="1_jiilp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taigi"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(340, 444, 212, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iervn"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(369, 543, 116, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de1qp"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(364, 456, 116, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvpdw"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(341, 487, 212, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36ues"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(369, 543, 116, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wql8y"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(365, 499, 116, 12)
+
+[node name="IngameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hgw7a")
+
+[node name="HPBar" type="Sprite2D" parent="."]
+position = Vector2(993, 34)
+texture = SubResource("AtlasTexture_taigi")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HPBar"]
+offset_left = -82.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 4.0
+fill_mode = 1
+texture_under = SubResource("AtlasTexture_iervn")
+texture_progress = SubResource("AtlasTexture_de1qp")
+metadata/_edit_use_anchors_ = true
+
+[node name="XPBar" type="Sprite2D" parent="."]
+position = Vector2(993, 80)
+texture = SubResource("AtlasTexture_nvpdw")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="XPBar"]
+offset_left = -82.0
+offset_top = -8.0
+offset_right = 34.0
+offset_bottom = 4.0
+fill_mode = 1
+texture_under = SubResource("AtlasTexture_36ues")
+texture_progress = SubResource("AtlasTexture_wql8y")

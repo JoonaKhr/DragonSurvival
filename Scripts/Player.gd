@@ -1,18 +1,11 @@
-extends "res://Scripts/BaseCharacter.gd"
+extends "res://Scripts/Base/BaseCharacter.gd"
 
-var bullet = load("res://Scenes/FireballBullet.tscn")
-var sword = load("res://Scenes/SwordBullet.tscn")
-var bullets
-
-
+var swordWeapon = load("res://Scenes/WeaponScenes/SwordWeapon.tscn")
+var list
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	getWeapon(sword, 1)
-	getWeapon(sword, 2)
-	getWeapon(sword, 4)
-	getWeapon(sword, 8)
-	getWeapon(bullet, 3)
-	print(expToLevel)
+	list = []
+	getWeapon(swordWeapon, list)
 
 func get_pos():
 	print(position)

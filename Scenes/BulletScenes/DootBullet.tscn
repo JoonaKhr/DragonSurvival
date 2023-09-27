@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://drqraorau52ha"]
+[gd_scene load_steps=10 format=3 uid="uid://drqraorau52ha"]
 
 [ext_resource type="Texture2D" uid="uid://mhyw567fox0m" path="res://Sprites/dootProjectile.png" id="2_lctgs"]
-[ext_resource type="AudioStream" uid="uid://d3vqjqnvwtc65" path="res://Sounds/doot.mp3" id="3_204er"]
 [ext_resource type="Script" path="res://Scripts/Projectiles/DootBullet.gd" id="3_j6b3e"]
 [ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="4_vmbl5"]
 
@@ -64,11 +63,6 @@ shape = SubResource("CircleShape2D_vk82c")
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_204er")
-autoplay = true
-bus = &"Sound Effects"
 
 [node name="Elements" parent="." instance=ExtResource("4_vmbl5")]
 elementTypes = 4

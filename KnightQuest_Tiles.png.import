@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfytwestow3rm"
-path="res://.godot/imported/background B layer3.png-1243a86620184cc8021486d9cadc508e.ctex"
+uid="uid://busglkpafmb0e"
+path="res://.godot/imported/KnightQuest_Tiles.png-5cb774a6afa60ae194b25ac08d963f4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Parallax/background B layer3.png"
-dest_files=["res://.godot/imported/background B layer3.png-1243a86620184cc8021486d9cadc508e.ctex"]
+source_file="res://KnightQuest_Tiles.png"
+dest_files=["res://.godot/imported/KnightQuest_Tiles.png-5cb774a6afa60ae194b25ac08d963f4c.ctex"]
 
 [params]
 
