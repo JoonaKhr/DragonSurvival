@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1iivuawpbm3m"]
+[gd_scene load_steps=13 format=3 uid="uid://d1iivuawpbm3m"]
 
 [ext_resource type="Script" path="res://Scripts/IngameUI.gd" id="1_hgw7a"]
 [ext_resource type="Texture2D" uid="uid://b8w88xwcegq1r" path="res://Sprites/Assets 2(Scale x2)-No-BG.png" id="1_jiilp"]
@@ -26,6 +26,21 @@ region = Rect2(369, 543, 116, 12)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wql8y"]
 atlas = ExtResource("1_jiilp")
 region = Rect2(365, 499, 116, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i0ji"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(1976, 32, 148, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hmlq"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(844, 808, 132, 132)
+
+[sub_resource type="SystemFont" id="SystemFont_kc3x0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bq2s6"]
+font = SubResource("SystemFont_kc3x0")
+font_size = 80
+font_color = Color(0.4375, 0.375, 0.3125, 1)
 
 [node name="IngameUI" type="Control"]
 layout_mode = 3
@@ -62,3 +77,27 @@ offset_bottom = 4.0
 fill_mode = 1
 texture_under = SubResource("AtlasTexture_36ues")
 texture_progress = SubResource("AtlasTexture_wql8y")
+
+[node name="Levelup" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(480, 150)
+texture = SubResource("AtlasTexture_2i0ji")
+
+[node name="LevelupTimer" type="Timer" parent="Levelup"]
+wait_time = 1.5
+
+[node name="LevelCounter" type="Sprite2D" parent="."]
+position = Vector2(1066, 139)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_7hmlq")
+
+[node name="Label" type="Label" parent="LevelCounter"]
+offset_left = -62.0
+offset_top = -62.0
+offset_right = 58.0
+offset_bottom = 58.0
+label_settings = SubResource("LabelSettings_bq2s6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="Levelup/LevelupTimer" to="." method="_on_levelup_timer_timeout"]

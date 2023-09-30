@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccxxfj45b1f8y"]
+[gd_scene load_steps=8 format=3 uid="uid://ccxxfj45b1f8y"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_ayie8"]
 [ext_resource type="PackedScene" uid="uid://e76srqcwb31g" path="res://Scenes/Player.tscn" id="2_axruk"]
-[ext_resource type="PackedScene" uid="uid://5ak1xr2u6k1t" path="res://Scenes/EnemyScenes/DootEnemy.tscn" id="2_kv8ao"]
 [ext_resource type="PackedScene" uid="uid://ccqcr0iinfflc" path="res://Scenes/Bush.tscn" id="3_b0c0d"]
-[ext_resource type="PackedScene" uid="uid://cqf0skjv80ggn" path="res://Scenes/EnemyScenes/KnightEnemy.tscn" id="3_rflsx"]
-[ext_resource type="Script" path="res://Scenes/tilemapGeneration.gd" id="5_2i4xa"]
+[ext_resource type="Script" path="res://Scripts/tilemapGeneration.gd" id="5_p4k10"]
 [ext_resource type="Texture2D" uid="uid://d0qlcxfy35c4b" path="res://Sprites/KnightQuest_Tiles.png" id="8_r7tuq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8d7w3"]
@@ -219,13 +217,11 @@ sources/0 = SubResource("TileSetAtlasSource_8d7w3")
 
 [node name="Node" type="Node"]
 script = ExtResource("1_ayie8")
-enemyScene = ExtResource("2_kv8ao")
-knightEnemyScene = ExtResource("3_rflsx")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_eph8j")
 format = 2
-script = ExtResource("5_2i4xa")
+script = ExtResource("5_p4k10")
 
 [node name="Bush" parent="." instance=ExtResource("3_b0c0d")]
 texture_filter = 1
@@ -237,6 +233,5 @@ autostart = true
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_axruk")]
 scale = Vector2(0.5, 0.5)
-metadata/_edit_group_ = true
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

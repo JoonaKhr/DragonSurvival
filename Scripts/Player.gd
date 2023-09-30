@@ -1,11 +1,10 @@
 extends "res://Scripts/Base/BaseCharacter.gd"
 
-var swordWeapon = load("res://Scenes/WeaponScenes/SwordWeapon.tscn")
 var list
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	list = []
-	getWeapon(swordWeapon, list)
+	Globals.getWeapon(self, Globals.weapons.values().pick_random(), list)
 
 func get_pos():
 	print(position)

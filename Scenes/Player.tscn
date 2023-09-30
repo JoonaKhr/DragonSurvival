@@ -62,7 +62,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeayv"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_23kpj")
@@ -70,6 +70,8 @@ maxHealth = 100
 health = 100
 speed = 400
 xpToLevel = 100.0
+level = 1
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -96,4 +98,5 @@ zoom = Vector2(1.5, 1.5)
 [connection signal="dead" from="." to="." method="_on_dead"]
 [connection signal="healthChanged" from="." to="IngameUI" method="_on_player_health_changed"]
 [connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="levelUp" from="." to="IngameUI" method="_on_player_level_up"]
 [connection signal="xpChanged" from="." to="IngameUI" method="_on_player_xp_changed"]

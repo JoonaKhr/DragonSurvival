@@ -12,6 +12,7 @@ var elementType
 
 signal hit
 signal dead
+signal levelUp
 signal healthChanged
 signal xpChanged
 
@@ -21,23 +22,21 @@ var movementState = movementStates.Idle
 var last_state = movementState
 var currentState = states.ALIVE
 
-func getWeapon(weapon, weapons):
-	var instancedWeapon = weapon.instantiate()
-	weapons.append(weapon)
-	add_child(instancedWeapon)
-
+#Gain XP from a source
 func gainExp(source):
 	currXp += source.currXp
 	xpChanged.emit(currXp)
 	if currXp >= xpToLevel:
 		gainLevelUp()
-
+		
+#When full of XP gain a level and raise the next level's required XP
 func gainLevelUp():
 	currXp = 0
 	xpChanged.emit(currXp)
 	level += 1
+	levelUp.emit(self, level)
 	xpToLevel *= 1.5
-	print("You got a level!, you are now level " + str(self.level))
+	print("You got a level!, you are now level " + str(level))
 	roundf(xpToLevel)
 
 #Send a signal when the character is hit and deduct health

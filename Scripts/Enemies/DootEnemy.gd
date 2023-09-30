@@ -8,7 +8,7 @@ func _ready():
 	$AnimatedSprite2D.play()
 	add_to_group("Enemies")
 	list = []
-	getWeapon(dootWeapon, list)
+	Globals.getWeapon(self, Globals.weapons["DootWeapon.tscn"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

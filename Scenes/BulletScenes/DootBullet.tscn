@@ -40,8 +40,9 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vk82c"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfnl0"]
+radius = 3.71055
+height = 18.1755
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.296786, 0.3)
@@ -54,11 +55,12 @@ multishot = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
 animation = &"new_animation"
-frame_progress = 0.787674
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6.73885, 3.33333)
-shape = SubResource("CircleShape2D_vk82c")
+position = Vector2(-4.249, 1.557)
+rotation = 1.12703
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_rfnl0")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
