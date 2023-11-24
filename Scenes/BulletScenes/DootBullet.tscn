@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://drqraorau52ha"]
+[gd_scene load_steps=9 format=3 uid="uid://drqraorau52ha"]
 
 [ext_resource type="Texture2D" uid="uid://mhyw567fox0m" path="res://Sprites/dootProjectile.png" id="2_lctgs"]
 [ext_resource type="Script" path="res://Scripts/Projectiles/DootBullet.gd" id="3_j6b3e"]
-[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="4_vmbl5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in0y3"]
 atlas = ExtResource("2_lctgs")
@@ -49,8 +48,6 @@ scale = Vector2(0.296786, 0.3)
 script = ExtResource("3_j6b3e")
 damage = 5.0
 projectileSpeed = 100.0
-attackTimer = 3.0
-multishot = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c0onx")
@@ -59,15 +56,11 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.249, 1.557)
 rotation = 1.12703
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_rfnl0")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="Elements" parent="." instance=ExtResource("4_vmbl5")]
-elementTypes = 4
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

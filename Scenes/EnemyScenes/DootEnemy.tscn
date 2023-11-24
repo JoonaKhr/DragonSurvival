@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ak1xr2u6k1t"]
+[gd_scene load_steps=9 format=3 uid="uid://5ak1xr2u6k1t"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/DootEnemy.gd" id="1_a4qfn"]
 [ext_resource type="Texture2D" uid="uid://ddmruc4j5ft5t" path="res://Sprites/dootSheet.png" id="2_tkdhq"]
-[ext_resource type="PackedScene" uid="uid://natglu0xk7xr" path="res://Scenes/Elements.tscn" id="3_3w0f4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ov3h"]
 atlas = ExtResource("2_tkdhq")
@@ -65,9 +64,6 @@ sprite_frames = SubResource("SpriteFrames_1dn0d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_11cnb")
-
-[node name="Elements" parent="." instance=ExtResource("3_3w0f4")]
-elementTypes = 4
 
 [connection signal="dead" from="." to="." method="_on_dead"]
 [connection signal="hit" from="." to="." method="_on_hit"]

@@ -22,7 +22,8 @@ func _on_player_xp_changed(plrXP):
 func _on_player_level_up(plr, plrLevel):
 	levelupSprite.show()
 	levelupSprite.get_child(0).start()
-	Globals.getWeapon(plr, Globals.weapons.values().pick_random(), plr.list)
+	var weapon = Globals.weapons.values().pick_random()
+	Globals.getWeapon(plr, weapon)
 	updateLevelCounter(str(plrLevel))
 
 func updateHealth(newValue: float):

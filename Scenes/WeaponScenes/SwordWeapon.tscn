@@ -7,9 +7,9 @@
 [node name="SwordWeapon" type="Node"]
 script = ExtResource("1_yqqru")
 projectile = ExtResource("2_sfarx")
-attackTime = 1.0
+multishot = 1
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="attackTimer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
 
@@ -17,4 +17,4 @@ autostart = true
 stream = ExtResource("4_pdiew")
 bus = &"Sound Effects"
 
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

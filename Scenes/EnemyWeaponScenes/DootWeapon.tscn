@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn52onwi6xys4"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/dootWeapon.gd" id="1_bd00h"]
+[ext_resource type="PackedScene" uid="uid://drqraorau52ha" path="res://Scenes/BulletScenes/DootBullet.tscn" id="2_s6v0o"]
+[ext_resource type="AudioStream" uid="uid://d3vqjqnvwtc65" path="res://Sounds/doot.mp3" id="3_fq27x"]
+
+[node name="DootWeapon" type="Node"]
+script = ExtResource("1_bd00h")
+projectile = ExtResource("2_s6v0o")
+multishot = 1
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="shootSoundEmitter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fq27x")
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -7,8 +7,7 @@ extends CharacterBody2D
 @export var currXp : int;
 @export var xpToLevel : float;
 @export var level : int;
-var weaponList : Array;
-var elementType
+var weaponDict : Dictionary;
 
 signal hit
 signal dead
@@ -29,6 +28,9 @@ func gainExp(source):
 	if currXp >= xpToLevel:
 		gainLevelUp()
 		
+func getDamage():
+	return damage		
+
 #When full of XP gain a level and raise the next level's required XP
 func gainLevelUp():
 	currXp = 0

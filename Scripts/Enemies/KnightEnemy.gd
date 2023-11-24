@@ -1,4 +1,4 @@
-extends "res://Scripts/Base/BaseEnemy.gd"
+extends "../Base/BaseEnemy.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +15,6 @@ func _process(delta):
 	var collision := move_and_collide(velocity * delta)
 	if collision != null:
 		var _body := collision.get_collider()
+		if _body == get_parent().get_node("Player"):
+			_body.hit.emit(self)
+			queue_free()

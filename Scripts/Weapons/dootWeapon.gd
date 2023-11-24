@@ -1,4 +1,4 @@
-extends "res://Scripts/Base/BaseWeapon.gd"
+extends "../Base/BaseWeapon.gd"
 
 
 # Called when the node enters the scene tree for the first time.

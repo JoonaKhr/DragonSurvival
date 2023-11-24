@@ -1,10 +1,10 @@
-extends "res://Scripts/Base/BaseCharacter.gd"
+extends "Base/BaseCharacter.gd"
 
-var list
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	list = []
-	Globals.getWeapon(self, Globals.weapons.values().pick_random(), list)
+	pass
+	#Globals.getWeapon(self, Globals.weapons.values().pick_random())
+	Globals.getWeapon(self, Globals.weapons["FireWeapon.tscn"])
 
 func get_pos():
 	print(position)

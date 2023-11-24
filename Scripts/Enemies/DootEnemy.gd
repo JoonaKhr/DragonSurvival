@@ -1,14 +1,10 @@
-extends "res://Scripts/Base/BaseEnemy.gd"
-
-var dootWeapon = load("res://Scenes/WeaponScenes/DootWeapon.tscn")
-var list
+extends "../Base/BaseEnemy.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 	add_to_group("Enemies")
-	list = []
-	Globals.getWeapon(self, Globals.weapons["DootWeapon.tscn"])
+	Globals.getWeapon(self, Globals.enemyWeapons["DootWeapon.tscn"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
