@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DragonSurvival"
 run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 

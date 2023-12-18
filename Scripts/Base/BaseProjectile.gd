@@ -4,13 +4,13 @@ extends Area2D
 @export var projectileSpeed : float;
 var velocity
 
-func getDamage():
+func get_damage():
 	return damage
 
-func getProjectileSpeed():
+func get_projectile_speed():
 	return projectileSpeed
 
-func getWeapon():
+func get_weapon():
 	pass
 
 func _on_body_entered(body):

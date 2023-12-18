@@ -12,10 +12,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	generateChunk(player.position)
+	generate_chunk(player.position)
 
 
-func generateChunk(_position):
+func generate_chunk(_position):
 	var tilePos = local_to_map(_position)
 	for x in range(width):
 		for y in range(height):

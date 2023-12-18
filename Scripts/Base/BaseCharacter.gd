@@ -22,17 +22,17 @@ var last_state = movementState
 var currentState = states.ALIVE
 
 #Gain XP from a source
-func gainExp(source):
+func gain_exp(source):
 	currXp += source.currXp
 	xpChanged.emit(currXp)
 	if currXp >= xpToLevel:
-		gainLevelUp()
+		gain_level_up()
 		
-func getDamage():
+func get_damage():
 	return damage		
 
 #When full of XP gain a level and raise the next level's required XP
-func gainLevelUp():
+func gain_level_up():
 	currXp = 0
 	xpChanged.emit(currXp)
 	level += 1
@@ -43,7 +43,7 @@ func gainLevelUp():
 
 #Send a signal when the character is hit and deduct health
 func _on_hit(source):
-	health -= source.getDamage()
+	health -= source.get_damage()
 	healthChanged.emit(health)
 	if health <= 0:
 		dead.emit()

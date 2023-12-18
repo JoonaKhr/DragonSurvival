@@ -10,7 +10,7 @@ func _ready():
 	dir_contents("Scenes/EnemyScenes", enemies)
 
 #Gives the given user the given weapon and puts the object into the given users list of weapons
-func getWeapon(user, weapon):
+func get_weapon(user, weapon):
 	var instance = weapon.instantiate()
 	if user.weaponDict.keys().has(weapon):
 		user.weaponDict[weapon].multishot += 1

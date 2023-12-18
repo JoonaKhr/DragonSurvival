@@ -5,38 +5,43 @@ extends Control
 @onready var levelCounter = $LevelCounter/Label
 @onready var levelupSprite = $Levelup
 var playerMaxHealth
-
+var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	playerMaxHealth = get_parent().maxHealth
+	player = get_tree().get_nodes_in_group("Player")[0]
+	playerMaxHealth = player.maxHealth
 	print("plr hlth: ", playerMaxHealth)
 	healthbar.value = 100
-	levelCounter.text = str(get_parent().level)
+	levelCounter.text = str(player.level)
 
 func _on_player_health_changed(plrHealth):
-	updateHealth(plrHealth)
+	update_health(plrHealth)
 
 func _on_player_xp_changed(plrXP):
-	updateXP(plrXP)
+	update_xp(plrXP)
 
-func _on_player_level_up(plr, plrLevel):
+func _on_player_level_up(_plr, plrLevel):
 	levelupSprite.show()
 	levelupSprite.get_child(0).start()
-	var weapon = Globals.weapons.values().pick_random()
-	Globals.getWeapon(plr, weapon)
-	updateLevelCounter(str(plrLevel))
+	get_tree().paused = true
+	$LevelupUI.visible = true
+	update_level_counter(str(plrLevel))
 
-func updateHealth(newValue: float):
+func update_health(newValue: float):
 	var newValuePct : float = newValue / playerMaxHealth * 100
 	healthbar.value = newValuePct
 
-func updateXP(newValue: float):
-	var newValuePct: float = newValue / get_parent().xpToLevel * 100
+func update_xp(newValue: float):
+	var newValuePct: float = newValue / player.xpToLevel * 100
 	xpbar.value = newValuePct
 
-func updateLevelCounter(newValue):
+func update_level_counter(newValue):
 	levelCounter.text = newValue
 
 
 func _on_levelup_timer_timeout():
 	levelupSprite.visible = false 
+
+
+func _on_gui_input(event):
+	pass # Replace with function body.

@@ -8,12 +8,13 @@
 script = ExtResource("1_3rck7")
 projectile = ExtResource("2_uysbp")
 multishot = 3
+description = "Shoots at the closest targets multishotting from closest to farthest"
 
-[node name="attackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="shootSoundEmitter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qcgix")
 
-[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

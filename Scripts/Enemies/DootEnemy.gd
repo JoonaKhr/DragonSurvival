@@ -4,7 +4,7 @@ extends "../Base/BaseEnemy.gd"
 func _ready():
 	$AnimatedSprite2D.play()
 	add_to_group("Enemies")
-	Globals.getWeapon(self, Globals.enemyWeapons["DootWeapon.tscn"])
+	Globals.get_weapon(self, Globals.enemyWeapons["DootWeapon.tscn"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

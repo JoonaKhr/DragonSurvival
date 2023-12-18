@@ -232,7 +232,6 @@ wait_time = 0.2
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_axruk")]
-scale = Vector2(0.5, 0.5)
 
 [node name="LineTimer" type="Timer" parent="."]
 wait_time = 3.0

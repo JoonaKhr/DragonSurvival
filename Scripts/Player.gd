@@ -4,7 +4,7 @@ extends "Base/BaseCharacter.gd"
 func _ready():
 	pass
 	#Globals.getWeapon(self, Globals.weapons.values().pick_random())
-	Globals.getWeapon(self, Globals.weapons["FireWeapon.tscn"])
+	Globals.get_weapon(self, Globals.weapons["BeamWeapon.tscn"])
 
 func get_pos():
 	print(position)
