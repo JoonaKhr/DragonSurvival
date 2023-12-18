@@ -24,6 +24,10 @@ func _on_player_level_up(_plr, plrLevel):
 	levelupSprite.show()
 	levelupSprite.get_child(0).start()
 	get_tree().paused = true
+	for child in $LevelupUI.get_children():
+		print(child.get_class())
+		if !child.is_class("ColorRect"):
+			child.randomise()
 	$LevelupUI.visible = true
 	update_level_counter(str(plrLevel))
 

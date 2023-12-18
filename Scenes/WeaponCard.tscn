@@ -26,6 +26,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 300.0
+pivot_offset = Vector2(75, 150)
 script = ExtResource("1_r64oa")
 
 [node name="ColorRect" type="ColorRect" parent="."]

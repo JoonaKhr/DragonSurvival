@@ -8,6 +8,12 @@ func _ready():
 	$Name.text = weapon_instance.name
 	$Description.text = weapon_instance.description
 
+func randomise():
+	random_weapon = Globals.weapons.values()[randi_range(0, Globals.weapons.keys().size()-1)]
+	var weapon_instance = random_weapon.instantiate()
+	$Name.text = weapon_instance.name
+	$Description.text = weapon_instance.description
+
 func _on_gui_input(event:InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
