@@ -69,7 +69,7 @@ script = ExtResource("1_23kpj")
 maxHealth = 100
 health = 100
 speed = 400
-xpToLevel = 1.0
+xpToLevel = 100.0
 level = 1
 metadata/_edit_group_ = true
 

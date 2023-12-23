@@ -11,6 +11,8 @@ func get_pos():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_pressed("pause"):
+		Globals.pause.emit()
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
 		$AnimatedSprite2D.flip_h = false

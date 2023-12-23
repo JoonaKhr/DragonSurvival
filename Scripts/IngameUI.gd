@@ -8,6 +8,7 @@ var playerMaxHealth
 var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.pause.connect(_on_game_pause)
 	player = get_tree().get_nodes_in_group("Player")[0]
 	playerMaxHealth = player.maxHealth
 	print("plr hlth: ", playerMaxHealth)
@@ -19,6 +20,10 @@ func _on_player_health_changed(plrHealth):
 
 func _on_player_xp_changed(plrXP):
 	update_xp(plrXP)
+
+func _on_game_pause():
+	get_tree().paused = true
+	$PauseScreen.visible = true
 
 func _on_player_level_up(_plr, plrLevel):
 	levelupSprite.show()

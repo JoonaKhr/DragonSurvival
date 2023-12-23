@@ -1,5 +1,7 @@
 extends Node
 
+
+signal pause
 var weapons: Dictionary
 var enemies: Dictionary
 var enemyWeapons: Dictionary
