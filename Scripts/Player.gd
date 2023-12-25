@@ -1,10 +1,13 @@
-extends "Base/BaseCharacter.gd"
+extends "Base/BasePlayer.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#Globals.getWeapon(self, Globals.weapons.values().pick_random())
-	Globals.get_weapon(self, Globals.weapons["BeamWeapon.tscn"])
+	Globals.get_weapon(self, Globals.weapons.values().pick_random())
+
+func reset_state():
+	health = maxHealth
+	currXp = 0
+	level = 1
 
 func get_pos():
 	print(position)

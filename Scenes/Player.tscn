@@ -86,9 +86,9 @@ shape = SubResource("CircleShape2D_oeayv")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="IngameUI" parent="CanvasLayer" instance=ExtResource("4_noqdi")]
+[node name="IngameUI" parent="UILayer" instance=ExtResource("4_noqdi")]
 anchors_preset = -1
 anchor_right = 1.172
 anchor_bottom = 1.169
@@ -96,7 +96,7 @@ offset_right = -1125.12
 offset_bottom = -631.26
 
 [connection signal="dead" from="." to="." method="_on_dead"]
-[connection signal="healthChanged" from="." to="CanvasLayer/IngameUI" method="_on_player_health_changed"]
+[connection signal="healthChanged" from="." to="UILayer/IngameUI" method="_on_player_health_changed"]
 [connection signal="hit" from="." to="." method="_on_hit"]
-[connection signal="levelUp" from="." to="CanvasLayer/IngameUI" method="_on_player_level_up"]
-[connection signal="xpChanged" from="." to="CanvasLayer/IngameUI" method="_on_player_xp_changed"]
+[connection signal="levelUp" from="." to="UILayer/IngameUI" method="_on_player_level_up"]
+[connection signal="xpChanged" from="." to="UILayer/IngameUI" method="_on_player_xp_changed"]

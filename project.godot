@@ -29,6 +29,15 @@ window/size/viewport_height=540
 
 project/assembly_name="DragonSurvival"
 
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "red",
+"res://Scripts/": "blue",
+"res://Sounds/": "yellow",
+"res://Sprites/": "green"
+}
+
 [input]
 
 shoot={

@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://ldok3acd85i1"]
+
+[ext_resource type="Texture2D" uid="uid://3xw0gx63mnnn" path="res://Sprites/SalmonSnakeSheet.png" id="1_fs1mu"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.gd" id="1_svl5k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rfif"]
+font_size = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh2q6"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(8, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on4iq"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(56, 10, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oml2w"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(2, 41, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m03i6"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(43, 8, 5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_msp1s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdltj"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(8, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v1wy"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(56, 10, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3hsf"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(2, 41, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igi2q"]
+atlas = ExtResource("1_fs1mu")
+region = Rect2(43, 8, 5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_54ref"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_svl5k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.117647, 0.117647, 0.117647, 0.415686)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 133.0
+offset_top = 24.0
+offset_right = 822.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "Dragon of the Survival"
+label_settings = SubResource("LabelSettings_0rfif")
+
+[node name="StartGameButton" type="TextureButton" parent="."]
+offset_left = 246.0
+offset_top = 222.0
+offset_right = 307.0
+offset_bottom = 227.0
+scale = Vector2(5.13, 5.13)
+texture_normal = SubResource("AtlasTexture_nh2q6")
+texture_pressed = SubResource("AtlasTexture_on4iq")
+texture_hover = SubResource("AtlasTexture_oml2w")
+texture_disabled = SubResource("AtlasTexture_m03i6")
+
+[node name="Label" type="Label" parent="StartGameButton"]
+layout_mode = 0
+offset_left = 6.82261
+offset_top = -3.89864
+offset_right = 123.823
+offset_bottom = 19.1014
+scale = Vector2(0.5, 0.5)
+text = "Start a Round"
+label_settings = SubResource("LabelSettings_msp1s")
+
+[node name="ExitGameButton" type="TextureButton" parent="."]
+offset_left = 246.0
+offset_top = 333.0
+offset_right = 305.0
+offset_bottom = 338.0
+scale = Vector2(5.13, 5.13)
+texture_normal = SubResource("AtlasTexture_gdltj")
+texture_pressed = SubResource("AtlasTexture_3v1wy")
+texture_hover = SubResource("AtlasTexture_n3hsf")
+texture_disabled = SubResource("AtlasTexture_igi2q")
+
+[node name="Label2" type="Label" parent="ExitGameButton"]
+layout_mode = 0
+offset_left = 6.23782
+offset_top = -3.7037
+offset_right = 115.238
+offset_bottom = 19.2963
+scale = Vector2(0.5, 0.5)
+text = "Stop surviving"
+label_settings = SubResource("LabelSettings_54ref")
+
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="ExitGameButton" to="." method="_on_exit_game_button_pressed"]

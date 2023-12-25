@@ -1,8 +1,8 @@
 extends Control
 
-@onready var healthbar = $HPBar/TextureProgressBar
-@onready var xpbar = $XPBar/TextureProgressBar
-@onready var levelCounter = $LevelCounter/Label
+@onready var healthbar = $Stats/HPBar/TextureProgressBar
+@onready var xpbar = $Stats/XPBar/TextureProgressBar
+@onready var levelCounter = $Stats/LevelCounter/Label
 @onready var levelupSprite = $Levelup
 var playerMaxHealth
 var player

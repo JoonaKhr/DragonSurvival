@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1iivuawpbm3m"]
+[gd_scene load_steps=16 format=3 uid="uid://d1iivuawpbm3m"]
 
-[ext_resource type="Script" path="res://Scripts/IngameUI.gd" id="1_hgw7a"]
+[ext_resource type="Script" path="res://Scripts/UI/IngameUI.gd" id="1_a0esd"]
 [ext_resource type="Texture2D" uid="uid://b8w88xwcegq1r" path="res://Sprites/Assets 2(Scale x2)-No-BG.png" id="1_jiilp"]
 [ext_resource type="PackedScene" uid="uid://c12x8nygo3tas" path="res://Scenes/LevelupUI.tscn" id="3_aw5wt"]
 [ext_resource type="PackedScene" uid="uid://c247tmhdog46a" path="res://Scenes/PauseScreen.tscn" id="4_l7gpa"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2i0ji"]
-atlas = ExtResource("1_jiilp")
-region = Rect2(1976, 32, 148, 40)
+[ext_resource type="PackedScene" uid="uid://ldok3acd85i1" path="res://Scenes/MainMenu.tscn" id="5_njmbu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvpdw"]
 atlas = ExtResource("1_jiilp")
@@ -44,6 +41,10 @@ font = SubResource("SystemFont_kc3x0")
 font_size = 80
 font_color = Color(0.4375, 0.375, 0.3125, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i0ji"]
+atlas = ExtResource("1_jiilp")
+region = Rect2(1976, 32, 148, 40)
+
 [node name="IngameUI" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -53,22 +54,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_hgw7a")
+script = ExtResource("1_a0esd")
 
-[node name="Levelup" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(480, 59)
-texture = SubResource("AtlasTexture_2i0ji")
+[node name="Stats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="LevelupTimer" type="Timer" parent="Levelup"]
-wait_time = 1.5
-
-[node name="XPBar" type="Sprite2D" parent="."]
+[node name="XPBar" type="Sprite2D" parent="Stats"]
 position = Vector2(473.5, 317)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_nvpdw")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="XPBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Stats/XPBar"]
 offset_left = -82.0
 offset_top = -8.0
 offset_right = 34.0
@@ -78,12 +77,12 @@ texture_under = SubResource("AtlasTexture_36ues")
 texture_progress = SubResource("AtlasTexture_wql8y")
 metadata/_edit_use_anchors_ = true
 
-[node name="HPBar" type="Sprite2D" parent="."]
+[node name="HPBar" type="Sprite2D" parent="Stats"]
 position = Vector2(473.5, 305)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_taigi")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HPBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Stats/HPBar"]
 offset_left = -82.0
 offset_top = -8.0
 offset_right = 33.0
@@ -93,12 +92,12 @@ texture_under = SubResource("AtlasTexture_iervn")
 texture_progress = SubResource("AtlasTexture_de1qp")
 metadata/_edit_use_anchors_ = true
 
-[node name="LevelCounter" type="Sprite2D" parent="."]
+[node name="LevelCounter" type="Sprite2D" parent="Stats"]
 position = Vector2(515, 311)
 scale = Vector2(0.17, 0.17)
 texture = SubResource("AtlasTexture_7hmlq")
 
-[node name="Label" type="Label" parent="LevelCounter"]
+[node name="Label" type="Label" parent="Stats/LevelCounter"]
 offset_left = -62.0
 offset_top = -62.0
 offset_right = 58.0
@@ -107,6 +106,14 @@ label_settings = SubResource("LabelSettings_bq2s6")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="Levelup" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(480, 59)
+texture = SubResource("AtlasTexture_2i0ji")
+
+[node name="LevelupTimer" type="Timer" parent="Levelup"]
+wait_time = 1.5
+
 [node name="LevelupUI" parent="." instance=ExtResource("3_aw5wt")]
 process_mode = 2
 visible = false
@@ -114,6 +121,9 @@ visible = false
 [node name="PauseScreen" parent="." instance=ExtResource("4_l7gpa")]
 visible = false
 layout_mode = 1
+
+[node name="MainMenu" parent="." instance=ExtResource("5_njmbu")]
+process_mode = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="timeout" from="Levelup/LevelupTimer" to="." method="_on_levelup_timer_timeout"]

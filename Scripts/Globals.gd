@@ -1,10 +1,11 @@
 extends Node
 
-
 signal pause
 var weapons: Dictionary
 var enemies: Dictionary
 var enemyWeapons: Dictionary
+var current_scene = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dir_contents("Scenes/EnemyWeaponScenes", enemyWeapons)

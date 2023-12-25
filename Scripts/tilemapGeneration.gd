@@ -1,8 +1,8 @@
 extends TileMap
 
 var moisture = FastNoiseLite.new()
-var width = 16.0
-var height = 16.0
+var width = 24.0
+var height = 24.0
 @onready var player = get_parent().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	generate_chunk(player.position)
-
 
 func generate_chunk(_position):
 	var tilePos = local_to_map(_position)
